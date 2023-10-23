@@ -1,0 +1,15 @@
+<div>
+  <h2>Five-Day Weather Forecast</h2>
+  <input [(ngModel)]="city" placeholder="Enter a city">
+  <button (click)="getFiveDayForecast()">Get 5-Day Forecast</button>
+</div>
+
+<div *ngIf="weatherData">
+  <h3>Weather Forecast for {{ city }}</h3>
+  <div *ngFor="let day of weatherData.list">
+    <p>Date: {{ day.dt_txt }}</p>
+    <p>Temperature: {{ day.main.temp }}°C</p>
+    <p>Weather: {{ day.weather[0].description }}</p>
+    <hr>
+  </div>
+</div>
