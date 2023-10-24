@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { WeatherService } from '../weather.service';
+import { List, Root } from '../models/five-days-forecast';
 
 @Component({
   selector: 'app-weather',
@@ -8,8 +9,8 @@ import { WeatherService } from '../weather.service';
 })
 export class WeatherComponent {
   city = '';
-  weatherData: any;
-
+  weatherData: List[] = [];
+  
   constructor(private weatherService: WeatherService) {}
 
   getFiveDayForecast() {
@@ -19,7 +20,7 @@ export class WeatherComponent {
 
     this.weatherService.getFiveDayForecast(this.city)
       .subscribe(data => {
-        this.weatherData = data;
+        this.weatherData = data.list;
       });
   }
 }

@@ -1,15 +1,27 @@
-<div>
-  <h2>Five-Day Weather Forecast</h2>
-  <input [(ngModel)]="city" placeholder="Enter a city">
-  <button (click)="getFiveDayForecast()">Get 5-Day Forecast</button>
-</div>
-
-<div *ngIf="weatherData">
-  <h3>Weather Forecast for {{ city }}</h3>
-  <div *ngFor="let day of weatherData.list">
-    <p>Date: {{ day.dt_txt }}</p>
-    <p>Temperature: {{ day.main.temp }}°C</p>
-    <p>Weather: {{ day.weather[0].description }}</p>
-    <hr>
+<div class="container">
+  <div class="mb-2">
+    <h2>Five-Day Weather Forecast</h2>
+    <input [(ngModel)]="city" placeholder="Enter a city" />
+    <button (click)="getFiveDayForecast()">Get 5-Day Forecast</button>
+  </div>
+  <div class="mb-2" *ngIf="weatherData">
+    <h3>Weather Forecast for {{ city }}</h3>
+    <table class="table table-bordered table-striped table-hover">
+      <thead>
+        <tr class="th-header-style">
+          <th>Date</th>
+          <th>Temp</th>
+          <th>Weather</th>
+          <!--<th>Categories</th>-->
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let day of weatherData">
+          <td>{{ day.dt_txt }}</td>
+          <td>{{ day.main.temp }}</td>
+          <td>{{ day.weather[0].description }}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
