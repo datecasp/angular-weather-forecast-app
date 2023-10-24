@@ -6,7 +6,7 @@
   </div>
   <div class="mb-2" *ngIf="weatherData">
     <h3>Weather Forecast for {{ city }}</h3>
-    <table class="table table-bordered table-striped table-hover">
+    <table class="table table-bordered table-hover">
       <thead>
         <tr class="th-header-style">
           <th>Date</th>
@@ -16,11 +16,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let day of weatherData">
-          <td>{{ day.dt_txt }}</td>
-          <td>{{ day.main.temp }}</td>
-          <td>{{ day.weather[0].description }}</td>
-        </tr>
+        <tr *ngFor="let data of weatherData; let i = index">
+          <ng-container *ngIf="i === 0 || i % 8 === 0">
+          <td>{{ data.dt_txt | date: 'EEE'}},{{ data.dt_txt | date}}</td>
+          <td>{{ data.main.temp | number:'1.0-0'}}&#8451;</td>
+          <td>{{ data.weather[0].description }}</td>
+          </ng-container>
       </tbody>
     </table>
   </div>
