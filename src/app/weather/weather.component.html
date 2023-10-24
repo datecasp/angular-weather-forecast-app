@@ -10,18 +10,27 @@
       <thead>
         <tr class="th-header-style">
           <th>Date</th>
-          <th>Temp</th>
           <th>Weather</th>
+          <th>Temp</th>
           <!--<th>Categories</th>-->
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let data of weatherData; let i = index">
           <ng-container *ngIf="i === 0 || i % 8 === 0">
-          <td>{{ data.dt_txt | date: 'EEE'}},{{ data.dt_txt | date}}</td>
-          <td>{{ data.main.temp | number:'1.0-0'}}&#8451;</td>
-          <td>{{ data.weather[0].description }}</td>
+            <td>
+              <div class="grid-container">
+                <div class="day">
+                  {{ data.dt_txt | date : "dd" }}
+                </div>
+                <div class="date">{{ data.dt_txt | date : "EEE" }}</div>
+                <div class="date">{{ data.dt_txt | monthName }}</div>
+              </div>
+            </td>
+            <td class="weather">{{ data.weather[0].description }}</td>
+            <td class="temp">{{ data.main.temp | number : "1.0-0" }}&#8451;</td>
           </ng-container>
+        </tr>
       </tbody>
     </table>
   </div>
