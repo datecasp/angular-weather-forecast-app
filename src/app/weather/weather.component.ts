@@ -13,6 +13,8 @@ export class WeatherComponent {
   city = '';
   cityCountry = '';
   weatherData: List[] = [];
+  selectedRowIndex: number = -1;
+  showSelectedRow: boolean = false;
   icon: string = '';
   cityError: boolean = false;
   logoUri = 'assets/LogoIntro.png';
