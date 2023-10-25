@@ -1,15 +1,23 @@
 <div class="container">
   <div>
     <h1>Five-Day Weather Forecast</h1>
-    <input [(ngModel)]="city" placeholder="Enter a city" />
-    <button (click)="getFiveDayForecast()">Get 5-Day Forecast</button>
+    <div class="input-group input-group-lg inputCity">
+      <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter a city" />
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="getFiveDayForecast()"
+      >
+        Get 5-Day Forecast
+      </button>
+    </div>
   </div>
   <div *ngIf="cityError">
     <h2 class="cityError">Type a correct city name to search</h2>
   </div>
-  <div *ngIf="hasForecast; then forecastTemplate else logoTemplate"></div>
+  <div *ngIf="hasForecast; then forecastTemplate; else logoTemplate"></div>
   <ng-template #forecastTemplate>
-    <h2 class="forecast">Weather Forecast for {{ city }}</h2>
+    <h2 class="forecast">Weather Forecast for {{ cityCountry }}</h2>
     <table class="table table-bordered table-hover">
       <thead>
         <tr>
@@ -31,9 +39,7 @@
               </div>
             </td>
             <td class="weather">
-              <img [src]="data.weather[0].icon" class="icon" />{{
-                data.weather[0].description
-              }}
+              <img [src]="data.weather[0].icon" class="icon" />{{ data.weather[0].description | titlecase }}
             </td>
             <td class="temp">{{ data.main.temp | number : "1.0-0" }}&#8451;</td>
           </ng-container>
@@ -42,6 +48,6 @@
     </table>
   </ng-template>
   <ng-template #logoTemplate>
-    <img [src]="logoUri" class="logoIntro"/>
+    <img [src]="logoUri" class="logoIntro" />
   </ng-template>
 </div>
