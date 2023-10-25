@@ -11,6 +11,7 @@ import { throwError } from 'rxjs';
 })
 export class WeatherComponent {
   city = '';
+  cityCountry = '';
   weatherData: List[] = [];
   icon: string = '';
   cityError: boolean = false;
@@ -43,7 +44,7 @@ export class WeatherComponent {
               data.list[i].weather[0].description
             );
           }
-
+          this.cityCountry = data.city.name.concat(" ("+data.city.country+")");
           this.weatherData = data.list;
         }
       });
