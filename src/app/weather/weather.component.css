@@ -5,28 +5,25 @@
   padding: 2em;
   vertical-align: middle;
 }
-.inputCity{
-    
+.forecast {
+  margin: 10% auto;
 }
-.forecast{
-    margin: 10% auto;
+.logoIntro {
+  margin: 10% auto;
+  height: 360px;
 }
-.logoIntro{
-    margin: 10% auto;
-    height: 360px;
+.cityError {
+  color: red;
+  font-size: larger;
+  font-weight: bolder;
 }
-.cityError{
-    color: red;
-    font-size: larger;
-    font-weight: bolder;
-}
-.th-header-style{
-    background-color: paleturquoise;
-    color: darkblue;
+.th-header-style {
+  background-color: paleturquoise;
+  color: darkblue;
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr 3fr;
 }
 .day {
   grid-row: span 2;
@@ -38,7 +35,23 @@
 .date {
   font-size: medium;
   font-weight: bold;
-  text-align: start;
+}
+.hour-stack{
+    grid-row: span 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    flex-wrap: nowrap;
+}
+.hour-labels {
+  font-size: large;
+  font-weight: bolder;
+}
+.hour {
+  font-size: xx-large;
+  font-weight: bolder;
 }
 .icon {
   height: 64px;
