@@ -17,7 +17,7 @@ export class WeatherService {
       q: city,
       appid: this.apiKey,
       units: 'metric',
-      cnt: '40' // Obtenemos datos para los próximos 5 días cada 3 horas, 40 predicciones
+      cnt: '40' // get 50 items, 5 days, one forecast each 3 hrs
     };
 
     return this.http.get<Root>(`${this.apiUrl}/forecast`, { params });
