@@ -2,7 +2,12 @@
   <div>
     <h1>Five-Day Weather Forecast</h1>
     <div class="input-group input-group-lg inputCity">
-      <input type="text" class="form-control" [(ngModel)]="city" placeholder="Enter a city" />
+      <input
+        type="text"
+        class="form-control"
+        [(ngModel)]="city"
+        placeholder="Enter a city"
+      />
       <button
         type="button"
         class="btn btn-primary"
@@ -27,14 +32,36 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let data of weatherData; let i = index">
-          <ng-container *ngIf="i === 0 || i % 8 === 0">
+        <tr
+          *ngFor="let data of weatherData; let i = index"
+          (click)="selectedRowIndex = i; showSelectedRow = !showSelectedRow"
+        >
+          <ng-container
+            *ngIf="
+              i === 0 ||
+              i % 8 === 0 ||
+              (showSelectedRow &&
+                i >= selectedRowIndex &&
+                i < selectedRowIndex + 8)
+            "
+          >
             <td>
               <div class="grid-container">
                 <div class="day">
                   {{ data.dt_txt | date : "dd" }}
                 </div>
                 <div class="date">{{ data.dt_txt | date : "EEE" }}</div>
+                <div class="hour-stack">
+                  <div  class="hour-labels">
+                    &nbsp;at&nbsp;
+                  </div>
+                  <div  class="hour">
+                    {{ data.dt_txt | date : "HH:mm" }}
+                  </div>
+                  <div  class="hour-labels">
+                    &nbsp;hrs&nbsp;
+                  </div>
+                </div>
                 <div class="date">{{ data.dt_txt | monthName }}</div>
               </div>
             </td>
