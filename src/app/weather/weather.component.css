@@ -3,14 +3,15 @@
   display: inline-block;
   text-align: center;
   padding: 2em;
-  margin: 5% auto;
+  vertical-align: middle;
+}
+.th-header-style{
+    background-color: paleturquoise;
+    color: darkblue;
 }
 .grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Define dos columnas de igual ancho */
-}
-.grid-item {
-  vertical-align: center;
+  grid-template-columns: 1fr 1fr;
 }
 .day {
   grid-row: span 2;
@@ -23,6 +24,10 @@
   font-size: medium;
   font-weight: bold;
   text-align: start;
+}
+.icon {
+  height: 64px;
+  width: 64px;
 }
 .weather {
   font-size: medium;

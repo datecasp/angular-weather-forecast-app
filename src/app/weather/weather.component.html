@@ -7,11 +7,11 @@
   <div class="mb-2" *ngIf="weatherData">
     <h3>Weather Forecast for {{ city }}</h3>
     <table class="table table-bordered table-hover">
-      <thead>
-        <tr class="th-header-style">
-          <th>Date</th>
-          <th>Weather</th>
-          <th>Temp</th>
+      <thead >
+        <tr>
+          <th  class="th-header-style">Date</th>
+          <th class="th-header-style">Weather</th>
+          <th class="th-header-style">Temp</th>
           <!--<th>Categories</th>-->
         </tr>
       </thead>
@@ -27,7 +27,7 @@
                 <div class="date">{{ data.dt_txt | monthName }}</div>
               </div>
             </td>
-            <td class="weather">{{ data.weather[0].description }}</td>
+            <td class="weather"><img [src]="icon" class="icon">{{ data.weather[0].description }}</td>
             <td class="temp">{{ data.main.temp | number : "1.0-0" }}&#8451;</td>
           </ng-container>
         </tr>
