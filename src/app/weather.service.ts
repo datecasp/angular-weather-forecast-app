@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Secrets } from 'src/secrets';
+import { Root } from './models/five-days-forecast';
 
 @Injectable({
   providedIn: 'root'
@@ -16,9 +17,9 @@ export class WeatherService {
       q: city,
       appid: this.apiKey,
       units: 'metric',
-      cnt: '5' // Obtenemos datos para los próximos 5 días
+      cnt: '40' // get 50 items, 5 days, one forecast each 3 hrs
     };
 
-    return this.http.get(`${this.apiUrl}/forecast`, { params });
+    return this.http.get<Root>(`${this.apiUrl}/forecast`, { params });
   }
 }

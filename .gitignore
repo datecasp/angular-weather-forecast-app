@@ -3,6 +3,10 @@
 # App secrets
 secrets.ts
 
+# VS y Material
+.vscode
+.angular
+
 # Compiled output
 /dist
 /tmp

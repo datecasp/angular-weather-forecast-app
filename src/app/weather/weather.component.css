@@ -1,6 +1,49 @@
-.container{
-    display: inline-block;
-    text-align: center;
-    padding: 2em;
-    margin: 5% auto;
+.container {
+  width: 40%;
+  display: inline-block;
+  text-align: center;
+  padding: 2em;
+  vertical-align: middle;
+}
+.forecast{
+    margin: 10% auto;
+}
+.logoIntro{
+    margin: 10% auto;
+    height: 360px;
+}
+.cityError{
+    color: red;
+    font-size: larger;
+    font-weight: bolder;
+}
+.th-header-style{
+    background-color: paleturquoise;
+    color: darkblue;
+}
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+.day {
+  grid-row: span 2;
+  font-size: xx-large;
+  font-weight: bolder;
+  text-align: end;
+  margin: auto 0 auto auto;
+}
+.date {
+  font-size: medium;
+  font-weight: bold;
+  text-align: start;
+}
+.icon {
+  height: 64px;
+  width: 64px;
+}
+.weather {
+  font-size: medium;
+}
+.temp {
+  font-size: x-large;
 }
