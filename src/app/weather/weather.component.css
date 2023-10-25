@@ -5,6 +5,18 @@
   padding: 2em;
   vertical-align: middle;
 }
+.forecast{
+    margin: 10% auto;
+}
+.logoIntro{
+    margin: 10% auto;
+    height: 360px;
+}
+.cityError{
+    color: red;
+    font-size: larger;
+    font-weight: bolder;
+}
 .th-header-style{
     background-color: paleturquoise;
     color: darkblue;

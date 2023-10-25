@@ -1,18 +1,21 @@
 <div class="container">
-  <div class="mb-2">
-    <h2>Five-Day Weather Forecast</h2>
+  <div>
+    <h1>Five-Day Weather Forecast</h1>
     <input [(ngModel)]="city" placeholder="Enter a city" />
     <button (click)="getFiveDayForecast()">Get 5-Day Forecast</button>
   </div>
-  <div class="mb-2" *ngIf="weatherData">
-    <h3>Weather Forecast for {{ city }}</h3>
+  <div *ngIf="cityError">
+    <h2 class="cityError">Type a correct city name to search</h2>
+  </div>
+  <div *ngIf="hasForecast; then forecastTemplate else logoTemplate"></div>
+  <ng-template #forecastTemplate>
+    <h2 class="forecast">Weather Forecast for {{ city }}</h2>
     <table class="table table-bordered table-hover">
-      <thead >
+      <thead>
         <tr>
-          <th  class="th-header-style">Date</th>
+          <th class="th-header-style">Date</th>
           <th class="th-header-style">Weather</th>
           <th class="th-header-style">Temp</th>
-          <!--<th>Categories</th>-->
         </tr>
       </thead>
       <tbody>
@@ -27,11 +30,18 @@
                 <div class="date">{{ data.dt_txt | monthName }}</div>
               </div>
             </td>
-            <td class="weather"><img [src]="icon" class="icon">{{ data.weather[0].description }}</td>
+            <td class="weather">
+              <img [src]="data.weather[0].icon" class="icon" />{{
+                data.weather[0].description
+              }}
+            </td>
             <td class="temp">{{ data.main.temp | number : "1.0-0" }}&#8451;</td>
           </ng-container>
         </tr>
       </tbody>
     </table>
-  </div>
+  </ng-template>
+  <ng-template #logoTemplate>
+    <img [src]="logoUri" class="logoIntro"/>
+  </ng-template>
 </div>

@@ -2,9 +2,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-.mb-2{
-    margin-bottom: 2em;
-}
 .table{
     vertical-align: middle;
 }
