@@ -5,3 +5,6 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .table{
     vertical-align: middle;
 }
+
+/* Open Layers CSS */
+@import "../node_modules/ol/ol.css";

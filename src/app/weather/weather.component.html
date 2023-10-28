@@ -2,6 +2,15 @@
   <div>
     <h1>Five-Day Weather Forecast</h1>
     <div class="input-group input-group-lg inputCity">
+      <button
+        type="button"
+        class="btn btn-info"
+        data-bs-toggle="modal"
+        data-bs-target="#mapModal"
+        (click)="loadMap = true;"
+      >
+        Map location
+      </button>
       <input
         type="text"
         class="form-control"
@@ -13,7 +22,7 @@
         class="btn btn-primary"
         (click)="getFiveDayForecast()"
       >
-        Get 5-Day Forecast
+        Get forecast
       </button>
     </div>
   </div>
@@ -52,21 +61,19 @@
                 </div>
                 <div class="date">{{ data.dt_txt | date : "EEE" }}</div>
                 <div class="hour-stack">
-                  <div  class="hour-labels">
-                    &nbsp;at&nbsp;
-                  </div>
-                  <div  class="hour">
+                  <div class="hour-labels">&nbsp;at&nbsp;</div>
+                  <div class="hour">
                     {{ data.dt_txt | date : "HH:mm" }}
                   </div>
-                  <div  class="hour-labels">
-                    &nbsp;hrs&nbsp;
-                  </div>
+                  <div class="hour-labels">&nbsp;hrs&nbsp;</div>
                 </div>
                 <div class="date">{{ data.dt_txt | monthName }}</div>
               </div>
             </td>
             <td class="weather">
-              <img [src]="data.weather[0].icon" class="icon" />{{ data.weather[0].description | titlecase }}
+              <img [src]="data.weather[0].icon" class="icon" />{{
+                data.weather[0].description | titlecase
+              }}
             </td>
             <td class="temp">{{ data.main.temp | number : "1.0-0" }}&#8451;</td>
           </ng-container>
@@ -77,4 +84,33 @@
   <ng-template #logoTemplate>
     <img [src]="logoUri" class="logoIntro" />
   </ng-template>
+</div>
+
+<!-- Map Modal -->
+<div
+  class="modal modal-xl fade"
+  id="mapModal"
+  tabindex="-1"
+  aria-labelledby="mapModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="mapModalLabel">
+          Locate the coordinates for forecast
+        </h1>
+        <button
+          type="button"
+          id="btnClose"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <div id="map" (mousedown)="getInitPosition()" (mouseup)="getFiveDayForecastByLatLong()"></div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -22,4 +22,16 @@ export class WeatherService {
 
     return this.http.get<Root>(`${this.apiUrl}/forecast`, { params });
   }
+
+  getFiveDayForecastByLatLong(latLon: number[]) {
+    const params = {
+      lat: latLon[1],
+      lon:latLon[0],
+      appid: this.apiKey,
+      units: 'metric',
+      cnt: '40' // get 50 items, 5 days, one forecast each 3 hrs
+    };
+
+    return this.http.get<Root>(`${this.apiUrl}/forecast`, { params });
+  }
 }
