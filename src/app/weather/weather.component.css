@@ -17,6 +17,13 @@
   font-size: larger;
   font-weight: bolder;
 }
+#map {
+    height: 700px;
+    width: 100%;
+  }
+#mouse-position{
+    height: 2rem;
+}
 .th-header-style {
   background-color: paleturquoise;
   color: darkblue;
