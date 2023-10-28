@@ -78,6 +78,7 @@ export class WeatherComponent implements OnInit {
         catchError((error) => {
           this.cityError = true;
           this.hasForecast = false;
+          this.city = "";
           return throwError(error);
         })
       )
@@ -96,16 +97,22 @@ export class WeatherComponent implements OnInit {
           );
           this.weatherData = data.list;
         }
+        this.city = "";
       });
   }
 
   getInitPosition() {
+    this.city ="";
     this.clickPosition = this.mousePositionControl.getCoordinatesJSON();
   }
 
   getFiveDayForecastByLatLong() {
     const coordinatesJSON = this.mousePositionControl.getCoordinatesJSON();
-    if(this.clickPosition[0] !== coordinatesJSON[0] || this.clickPosition[1] !== coordinatesJSON[1]) return;
+    if (
+      this.clickPosition[0] !== coordinatesJSON[0] ||
+      this.clickPosition[1] !== coordinatesJSON[1]
+    )
+      return;
     this.weatherService
       .getFiveDayForecastByLatLong(coordinatesJSON)
       .subscribe((data) => {
@@ -118,10 +125,8 @@ export class WeatherComponent implements OnInit {
               data.list[i].weather[0].description
             );
           }
-          /* this.cityCountry = data.city.name.concat(
-            ' (' + data.city.country + ')'
-          ); */
-          this.cityCountry = ' lat: '+coordinatesJSON[0]+', lon: '+coordinatesJSON[1];
+          this.cityCountry =
+            ' lat: ' + coordinatesJSON[0] + ', lon: ' + coordinatesJSON[1];
           this.weatherData = data.list;
         }
       });
